@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kejar_recruitment/constants/colors_const.dart';
 import 'package:kejar_recruitment/screens/wrapper.dart';
+import 'package:kejar_recruitment/services/auth.dart';
 
 class AuthScreen extends StatefulWidget {
   @override
@@ -10,6 +11,7 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
+  final AuthHandler _auth = AuthHandler();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,10 +56,14 @@ class _AuthScreenState extends State<AuthScreen> {
                     fontWeight: FontWeight.bold,
                     color: Colors.white)),
             color: mTitleColor,
-            onPressed: () => {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => Wrapper()),
-              )
+            onPressed: () async {
+              dynamic result = await _auth.signInAnonymous();
+              if (result == null) {
+                print('error signin');
+              } else {
+                print("signed in");
+                print(result.uid);
+              }
             },
           ),
           SizedBox(
