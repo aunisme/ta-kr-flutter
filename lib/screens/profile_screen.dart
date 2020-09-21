@@ -10,6 +10,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final AuthHandler _auth = AuthHandler();
+  String name = 'Muhammad Syahrul';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,40 +28,86 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ],
           ),
           SliverToBoxAdapter(
-            child: Container(
-              height: 100,
-              // color: Colors.amber,
-              child: Column(
-                children: [
-                  Center(
-                    child: Container(
-                        margin: const EdgeInsets.only(top: 20),
-                        child: Text(
-                          'Ini halaman profile',
+            child: Column(
+              children: [
+                Container(
+                    margin: const EdgeInsets.only(top: 20),
+                    child: Column(
+                      children: [
+                        Container(
+                          width: 90,
+                          height: 90,
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(
+                                'https://avatars3.githubusercontent.com/u/25707032?s=400&u=ec9aa633ea3e79c6e09f617218f0056fc3fe84cc&v=4'),
+                          ),
+                        )
+                      ],
+                    )),
+                Container(
+                    margin: const EdgeInsets.only(top: 10),
+                    child: Column(
+                      children: [
+                        Text(
+                          '$name',
                           style: GoogleFonts.montserrat(
-                              fontSize: 28,
+                              fontSize: 18,
                               color: mTitleColor,
                               fontWeight: FontWeight.bold),
-                        )),
-                  ),
-                  Center(
-                    child: Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        child: Text(
-                          'One more step to join our team',
-                          style: GoogleFonts.montserrat(
-                              fontSize: 16,
-                              color: mTitleColor,
-                              fontWeight: FontWeight.normal),
-                        )),
-                  )
-                ],
-              ),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        Container(
+                          height: 80,
+                          margin: const EdgeInsets.symmetric(horizontal: 16),
+                          width: MediaQuery.of(context).size.width - 54,
+                          decoration: BoxDecoration(
+                              color: mBlueColor,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey,
+                                    blurRadius: 7.5,
+                                    offset: Offset(0, 5))
+                              ],
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Applied for: ',
+                                  style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Colors.white70,
+                                      fontWeight: FontWeight.normal)),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Text('Second Line Maintainer',
+                                  style: GoogleFonts.montserrat(
+                                      fontSize: 16,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold))
+                            ],
+                          ),
+                        )
+                      ],
+                    )),
+                SizedBox(
+                  height: 10,
+                ),
+                Divider(
+                  height: 10,
+                  indent: 16,
+                  endIndent: 16,
+                  color: Colors.grey[100],
+                  thickness: 2,
+                )
+              ],
             ),
           ),
           SliverToBoxAdapter(
             child: SizedBox(
-              height: 450,
+              height: 350,
             ),
           ),
           SliverToBoxAdapter(

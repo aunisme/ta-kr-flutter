@@ -30,7 +30,7 @@ class HomeWidget extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Container(
-              height: 100,
+              // height: 100,
               // color: Colors.amber,
               child: Column(
                 children: [
@@ -55,7 +55,38 @@ class HomeWidget extends StatelessWidget {
                               color: mTitleColor,
                               fontWeight: FontWeight.normal),
                         )),
+                  ),
+                  SizedBox(
+                    height: 20,
                   )
+                ],
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              // height: 80,
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 54),
+              width: MediaQuery.of(context).size.width - 100,
+              decoration: BoxDecoration(
+                  // color: Colors.red[200],
+                  // backgroundBlendMode: BlendMode.clear,
+                  borderRadius: BorderRadius.circular(10)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Batas waktu:',
+                      style: GoogleFonts.montserrat(
+                          color: mTitleColor, fontWeight: FontWeight.normal)),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text('15:35:21',
+                      style: GoogleFonts.montserrat(
+                          fontSize: 22,
+                          color: mTitleColor,
+                          fontWeight: FontWeight.bold))
                 ],
               ),
             ),

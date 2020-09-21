@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:kejar_recruitment/constants/colors_const.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -14,3 +14,16 @@ var otherTitle = GoogleFonts.bitter(fontSize: 12, fontWeight: FontWeight.w500);
 
 var mBottomText =
     GoogleFonts.montserrat(fontSize: 12, fontWeight: FontWeight.w500);
+
+const signInInputDecoration = InputDecoration(
+  fillColor: Colors.white,
+  filled: true,
+  contentPadding: EdgeInsets.all(12.0),
+  hintStyle: TextStyle(),
+  enabledBorder: OutlineInputBorder(
+    borderSide: BorderSide(color: Colors.white, width: 2.0),
+  ),
+  focusedBorder: OutlineInputBorder(
+    borderSide: BorderSide(color: mTitleColor, width: 2.0),
+  ),
+);
