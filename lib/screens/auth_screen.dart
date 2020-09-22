@@ -13,7 +13,7 @@ class AuthScreen extends StatefulWidget {
 
 class _AuthScreenState extends State<AuthScreen> {
   // final AuthHandler _auth = AuthHandler();
-  bool showLogin = true;
+  bool showLogin = false;
   void toggleLogin() {
     setState(() => showLogin = !showLogin);
   }

@@ -26,7 +26,14 @@ class MyApp extends StatelessWidget {
             primaryColor: Colors.blue,
             visualDensity: VisualDensity.adaptivePlatformDensity,
             scaffoldBackgroundColor: mFillColor),
-        home: Wrapper(),
+        // home: Wrapper(),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => Wrapper(),
+          '/test': (context) => TestScreen(),
+          '/interview': (context) => InterviewScreen(),
+          '/training': (context) => TrainingScreen()
+        },
       ),
     );
     // StreamProvider.value(

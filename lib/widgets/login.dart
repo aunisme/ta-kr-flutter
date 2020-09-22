@@ -17,6 +17,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   bool _obscure = true;
   String email = '';
   String password = '';
+  String err = '';
 
   @override
   Widget build(BuildContext context) {
@@ -110,18 +111,25 @@ class _LoginWidgetState extends State<LoginWidget> {
                               color: Colors.white)),
                       color: mTitleColor,
                       //this should be async
-                      onPressed: () {
+                      onPressed: () async {
                         if (_formKey.currentState.validate()) {
+                          dynamic result = await _auth
+                              .signInWithEmailAndPassword(email, password);
+                          if (result == null) {
+                            setState(() {
+                              err = 'Can not login with this credential';
+                            });
+                          }
                           print(email);
                           print(password);
                         }
                       },
                     ),
                     SizedBox(height: 30.0),
-                    // Text(
-                    //   error,
-                    //   style: TextStyle(color: Colors.red, fontSize: 14.0),
-                    // ),
+                    Text(
+                      err,
+                      style: TextStyle(color: Colors.red, fontSize: 14.0),
+                    ),
                   ],
                 ),
               ),
@@ -144,7 +152,7 @@ class _LoginWidgetState extends State<LoginWidget> {
               },
             ),
             SizedBox(
-              height: 80,
+              height: 70,
             ),
             Text('PT. Kelola Jasa Artha'),
             SizedBox(

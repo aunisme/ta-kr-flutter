@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kejar_recruitment/constants/constants.dart';
+import 'package:kejar_recruitment/models/user.dart';
 import 'screens.dart';
+import 'package:provider/provider.dart';
 
 class BaseContainer extends StatefulWidget {
   @override
@@ -24,6 +27,8 @@ class _BaseContainerState extends State<BaseContainer> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserModel>(context);
+
     return Scaffold(
       body: _children.elementAt(_selectedIndex),
       bottomNavigationBar: Container(

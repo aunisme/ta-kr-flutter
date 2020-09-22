@@ -60,7 +60,7 @@ class _LandingWidgetState extends State<LandingWidget> {
             },
           ),
           SizedBox(
-            height: 50,
+            height: 60,
           ),
           Text('PT. Kelola Jasa Artha'),
           SizedBox(
