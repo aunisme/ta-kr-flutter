@@ -14,7 +14,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final user = false;
+  // final user = false;
   @override
   Widget build(BuildContext context) {
     return StreamProvider<UserModel>.value(

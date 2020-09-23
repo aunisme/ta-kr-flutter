@@ -1,11 +1,12 @@
+import 'package:countdown_flutter/countdown_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kejar_recruitment/constants/colors_const.dart';
 import 'package:kejar_recruitment/services/database.dart';
 import '../widgets/widgets.dart';
 import 'package:kejar_recruitment/models/user.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeWidget extends StatefulWidget {
   @override
@@ -13,12 +14,20 @@ class HomeWidget extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomeWidget> {
-  String name = 'Syahrul';
+  Future<SharedPreferences> _conf = SharedPreferences.getInstance();
+
+  bool enabled = true;
+  int duration = 12;
+
+  @override
+  void dispose() {
+    duration = 0;
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
-
-    // print(user.uid);
 
     return StreamBuilder<UserData>(
         stream: FirestoreService(uid: user.uid).userData,
@@ -115,11 +124,21 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     SizedBox(
                                       width: 10,
                                     ),
-                                    Text('15:35:21',
-                                        style: GoogleFonts.montserrat(
-                                            fontSize: 16,
-                                            color: mTitleColor,
-                                            fontWeight: FontWeight.bold))
+                                    CountdownFormatted(
+                                        duration: Duration(seconds: duration),
+                                        onFinish: () {
+                                          setState(() {
+                                            duration = 0;
+                                            enabled = !enabled;
+                                          });
+                                        },
+                                        builder: (BuildContext contex,
+                                            String remaining) {
+                                          return Text(remaining,
+                                              style: GoogleFonts.montserrat(
+                                                  color: mTitleColor,
+                                                  fontWeight: FontWeight.bold));
+                                        })
                                   ],
                                 ),
                               ),
@@ -131,12 +150,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                     ),
                   ),
                   SliverToBoxAdapter(
-                    child: TestCardWidget(
+                    child: ActionCard(
                       title: 'Take the test',
                       subtitle: 'Complete to unlock your next step.',
                       assetLink: 'assets/images/auth-screen-art.svg',
                       color: Colors.blue[200],
                       route: '/test',
+                      enabled: enabled,
                     ),
                   ),
                   SliverToBoxAdapter(
@@ -145,12 +165,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                     ),
                   ),
                   SliverToBoxAdapter(
-                    child: TestCardWidget(
+                    child: ActionCard(
                       title: 'Your Interview',
                       subtitle: 'Complete to unlock your next step.',
                       assetLink: 'assets/images/auth-screen-art.svg',
                       color: Colors.red[200],
                       route: '/interview',
+                      enabled: true,
                     ),
                   ),
                   SliverToBoxAdapter(
@@ -159,12 +180,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                     ),
                   ),
                   SliverToBoxAdapter(
-                    child: TestCardWidget(
+                    child: ActionCard(
                       title: 'Your Training',
                       subtitle: 'Complete to unlock your next step.',
                       assetLink: 'assets/images/auth-screen-art.svg',
                       color: Colors.green[200],
                       route: '/training',
+                      enabled: true,
                     ),
                   ),
                   // SliverToBoxAdapter(

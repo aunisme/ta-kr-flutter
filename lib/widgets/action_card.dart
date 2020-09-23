@@ -1,45 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/constants.dart';
 import '../screens/screens.dart';
 
-class TestCardWidget extends StatelessWidget {
+class ActionCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final String assetLink;
   final Color color;
   final String route;
+  final bool enabled;
 
-  const TestCardWidget({
+  const ActionCard({
     Key key,
     @required this.title,
     @required this.subtitle,
     @required this.assetLink,
     @required this.color,
     @required this.route,
+    this.enabled,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      onPressed: () => {Navigator.pushNamed(context, '$route')},
+      onPressed: () =>
+          {if (enabled) Navigator.pushNamed(context, '$route') else null},
       child: Row(
         children: [
           Container(
             height: 160,
             width: MediaQuery.of(context).size.width - 32,
             decoration: BoxDecoration(
-                color: color,
-                // boxShadow: [
-                //   BoxShadow(
-                //       color: Colors.grey, blurRadius: 7.5, offset: Offset(0, 5))
-                // ],
-                border: Border.all(
-                    width: 1.0,
-                    style: BorderStyle.solid,
-                    color: Colors.grey[300]),
-                borderRadius: BorderRadius.circular(30)),
+              color: enabled ? color : Colors.grey,
+              // boxShadow: [
+              //   BoxShadow(
+              //       color: Colors.grey, blurRadius: 7.5, offset: Offset(0, 5))
+              // ],
+              // border: Border.all(
+              //     width: 1.0,
+              //     style: BorderStyle.solid,
+              //     color: Colors.grey[300]),
+              borderRadius: BorderRadius.circular(30),
+            ),
             child: Column(
               children: [
                 Row(
