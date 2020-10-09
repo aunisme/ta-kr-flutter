@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => Wrapper(),
-          '/test': (context) => TestScreen(),
+          '/test': (context) => TestContainer(),
           '/interview': (context) => InterviewScreen(),
           '/training': (context) => TrainingScreen()
         },

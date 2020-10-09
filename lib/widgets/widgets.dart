@@ -6,3 +6,6 @@ export 'login.dart';
 export 'landing.dart';
 export 'loading.dart';
 export 'test_card.dart';
+export 'question_card.dart';
+export 'option_btn.dart';
+export 'timer.dart';

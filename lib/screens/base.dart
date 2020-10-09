@@ -12,16 +12,37 @@ class BaseContainer extends StatefulWidget {
 }
 
 class _BaseContainerState extends State<BaseContainer> {
+  PageController _pageController;
   int _selectedIndex = 0;
-  final List<Widget> _children = [
+  final List<Widget> _screens = [
     HomeScreen(),
     NotificationScreen(),
     ProfileScreen(),
   ];
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void onPageChanged(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      _pageController.jumpToPage(index);
     });
   }
 
@@ -30,7 +51,11 @@ class _BaseContainerState extends State<BaseContainer> {
     final user = Provider.of<UserModel>(context);
 
     return Scaffold(
-      body: _children.elementAt(_selectedIndex),
+      body: PageView(
+        children: _screens,
+        controller: _pageController,
+        onPageChanged: onPageChanged,
+      ),
       bottomNavigationBar: Container(
         height: 70,
         decoration: BoxDecoration(

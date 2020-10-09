@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kejar_recruitment/constants/constants.dart';
+import 'package:kejar_recruitment/constants/colors_const.dart';
 import 'package:kejar_recruitment/widgets/widgets.dart';
 
 class TestScreen extends StatefulWidget {
@@ -12,71 +12,58 @@ class _TestScreenState extends State<TestScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            iconTheme: IconThemeData(
-              color: mTitleColor,
-            ),
-            brightness: Brightness.light,
-            backgroundColor: mFillColor,
-            actions: [
-              IconButton(
-                icon: Icon(Icons.error_outline),
-                onPressed: () => print("info"),
-                color: Colors.grey,
-              )
-            ],
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              // color: Colors.blue,
-              height: 150,
-              // color: Colors.amber,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                      margin: const EdgeInsets.only(top: 20, left: 16),
-                      child: Text(
-                        'Prove you\'re worthy',
-                        style: GoogleFonts.montserrat(
-                            fontSize: 24,
-                            color: mTitleColor,
-                            fontWeight: FontWeight.bold),
-                      )),
-                  Container(
-                      width: 250,
-                      margin:
-                          const EdgeInsets.only(top: 10, left: 16, right: 16),
-                      child: Text(
-                        'Complete all the test to make sure you get a chance to get to the next step.',
-                        style: GoogleFonts.montserrat(
-                            fontSize: 14,
-                            color: mTitleColor,
-                            fontWeight: FontWeight.normal),
-                      ))
-                ],
+      backgroundColor: mFillColor,
+      appBar: AppBar(
+        backgroundColor: mFillColor,
+        elevation: 0,
+      ),
+      body: Container(
+        // color: Colors.blue[100],
+        margin: const EdgeInsets.symmetric(horizontal: 16),
+        width: MediaQuery.of(context).size.width - 32,
+        child: Column(
+          children: [
+            Container(
+              height: 50,
+              decoration: BoxDecoration(
+                boxShadow: [BoxShadow(color: Colors.grey[200])],
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.blue[400],
               ),
+              child: Center(
+                  child: Text(
+                'Test Pengetahuan Umum',
+                style: GoogleFonts.montserrat(
+                    fontSize: 16,
+                    color: otherWhite,
+                    fontWeight: FontWeight.bold),
+              )),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: TestCard(
-              color: Colors.amber,
-              assetLink: 'assets/images/auth-screen-art.svg',
-              title: 'Pengetahuan Umum',
-              subtitle: 'lorem ipsum dolor sit amet.',
+            SizedBox(
+              height: 10,
             ),
-          ),
-          SliverToBoxAdapter(
-            child: TestCard(
-              color: Colors.blue,
-              assetLink: 'assets/images/auth-screen-art.svg',
-              title: 'Psikotes',
-              subtitle: 'lorem ipsum dolor sit amet.',
+            TimerWidget(),
+            SizedBox(
+              height: 20,
             ),
-          )
-        ],
+            QuestionCard(),
+            SizedBox(
+              height: 20,
+            ),
+            OptionButton(option: 'Option 1'),
+            OptionButton(option: 'Option 2'),
+            OptionButton(option: 'Option 3'),
+            OptionButton(option: 'Option 4'),
+            SizedBox(
+              height: 10,
+            ),
+            MaterialButton(
+              minWidth: 200,
+              onPressed: () {},
+              child: Text('Next'),
+            )
+          ],
+        ),
       ),
     );
   }

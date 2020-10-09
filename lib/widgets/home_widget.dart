@@ -20,12 +20,6 @@ class _HomeWidgetState extends State<HomeWidget> {
   int duration = 12;
 
   @override
-  void dispose() {
-    duration = 0;
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
 
@@ -128,8 +122,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         duration: Duration(seconds: duration),
                                         onFinish: () {
                                           setState(() {
-                                            duration = 0;
-                                            enabled = !enabled;
+                                            // duration = 0;
+                                            // enabled = !enabled;
                                           });
                                         },
                                         builder: (BuildContext contex,

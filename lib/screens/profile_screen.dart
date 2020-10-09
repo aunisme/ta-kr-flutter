@@ -12,8 +12,12 @@ class ProfileScreen extends StatefulWidget {
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfileScreenState extends State<ProfileScreen>
+    with AutomaticKeepAliveClientMixin {
   final AuthHandler _auth = AuthHandler();
+
+  @override
+  bool get wantKeepAlive => true;
   // String name = 'Muhammad Syahrul';
   @override
   Widget build(BuildContext context) {
@@ -151,34 +155,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 height: MediaQuery.of(context).size.height - 32,
                 child: LoadingWidget(),
               ),
-              // body: CustomScrollView(
-              //   slivers: [
-              //     SliverAppBar(
-              //       brightness: Brightness.light,
-              //       backgroundColor: mFillColor,
-              //       actions: [
-              //         IconButton(
-              //           icon: Icon(Icons.error_outline),
-              //           onPressed: () => print("info"),
-              //           color: Colors.grey,
-              //         )
-              //       ],
-              //     ),
-
-              // SliverToBoxAdapter(
-              //   child: Center(
-              //     child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       crossAxisAlignment: CrossAxisAlignment.start,
-              //       children: [
-              //         // Center(child: Container(child: Text('Loading...'))),
-              //         LoadingWidget()
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              // ],
-              // ),
             );
           }
         });

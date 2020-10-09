@@ -2,12 +2,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:kejar_recruitment/models/user.dart';
 
 class FirestoreService {
-  final String uid;
-  FirestoreService({this.uid});
+  final String uid, testId;
+  FirestoreService({this.uid, this.testId});
 
   //candidates collections
   final CollectionReference candidates =
       FirebaseFirestore.instance.collection('candidates');
+
+  final CollectionReference test =
+      FirebaseFirestore.instance.collection('test');
 
   //candidate data from firebse
   UserData _userSnapshot(DocumentSnapshot snap) {
@@ -23,5 +26,9 @@ class FirestoreService {
 
   Stream<UserData> get userData {
     return candidates.doc(uid).snapshots().map(_userSnapshot);
+  }
+
+  getTest() async {
+    return await test.doc('tpu').collection('tpu1').get();
   }
 }
