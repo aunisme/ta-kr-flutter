@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kejar_recruitment/constants/colors_const.dart';
-import '../widgets/widgets.dart';
+import '../../../widgets/widgets.dart';
 
 class HomeWidget extends StatelessWidget {
   final String name = 'Syahrul';

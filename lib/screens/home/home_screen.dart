@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kejar_recruitment/screens/base.dart';
-import '../widgets/widgets.dart';
+import '../../widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

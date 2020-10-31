@@ -47,10 +47,9 @@ class _BaseContainerState extends State<BaseContainer> {
             BottomNavigationBarItem(
                 icon: SvgPicture.asset('assets/icons/home.svg'),
                 activeIcon: SvgPicture.asset('assets/icons/home_active.svg'),
-                title: Text(
+                label: 
                   'Home',
-                  style: mBottomText,
-                )),
+                ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/notification.svg',
@@ -60,18 +59,15 @@ class _BaseContainerState extends State<BaseContainer> {
               ),
               activeIcon:
                   SvgPicture.asset('assets/icons/notification_active.svg'),
-              title: Text(
+              label:
                 'Notification',
-                style: mBottomText,
-              ),
             ),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset('assets/icons/profile.svg'),
                 activeIcon: SvgPicture.asset('assets/icons/profile_active.svg'),
-                title: Text(
+                label:
                   'Profile',
-                  style: mBottomText,
-                )),
+            ),
           ],
           currentIndex: _selectedIndex,
           selectedItemColor: mBlueColor,

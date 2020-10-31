@@ -14,3 +14,8 @@ var otherTitle = GoogleFonts.bitter(fontSize: 12, fontWeight: FontWeight.w500);
 
 var mBottomText =
     GoogleFonts.montserrat(fontSize: 12, fontWeight: FontWeight.w500);
+
+var cardTitle = GoogleFonts.montserrat(
+                            fontSize: 18,
+                            color: bgColor,
+                            fontWeight: FontWeight.bold);
